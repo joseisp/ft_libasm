@@ -1,7 +1,7 @@
 SRC_C = main.c
-SRC_ASM = ft_strlen.s
+SRC_ASM = ft_strcpy.s
 OBJ_C = main.o
-OBJ_ASM = ft_strlen.o
+OBJ_ASM = ft_strcpy.o
 LIBRARY = soma.a
 EXEC = programa
 
