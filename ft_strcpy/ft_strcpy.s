@@ -1,6 +1,6 @@
 section .data
-    hello       db "Error! Check the arguments", 0xA
-    newLine     db 0xa
+    erro_msg       db "Error! Check the arguments", 0xA
+    new_line     db 0xa
 
 section .text
     global ft_strcpy
@@ -10,10 +10,10 @@ ft_strcpy:
     mov rcx, 0
 
     test rsi, rsi
-    jz errorNull
+    jz _error_null
 
     test rdi, rdi
-    jz errorNull
+    jz _error_null
 
 _loop:
     mov     al, byte[rsi + rcx]
@@ -26,16 +26,16 @@ return:
     mov     rax, rdi
     ret
 
-errorNull:
+_error_null:
     mov rax, 1
     mov rdi, 1
-    mov rsi, hello
+    mov rsi, erro_msg
     mov rdx, 26
     syscall
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, newLine
+    mov rsi, new_line
     mov rdx, 1
     syscall
 
