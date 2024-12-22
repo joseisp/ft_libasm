@@ -1,16 +1,32 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h> 
 
-int main(int argc, char **argv){
 
-    int result = strcmp(argv[1], argv[2]);
+int main() {
+    const char *message = "aaaa\n";
+    int i = write(-1, message, 5); // 1 é o descritor de arquivo para stdout
 
-    printf("S1: %s, S2: %s\n", argv[1], argv[2]);
-    printf("Resultado: %d\n", result);
-
+    printf("o retorno de i: %d \n", i);
     return 0;
 }
+
+
+
+
+
+
+
+// int main(int argc, char **argv){
+
+//     int result = strcmp(argv[1], argv[2]);
+
+//     printf("S1: %s, S2: %s\n", argv[1], argv[2]);
+//     printf("Resultado: %d\n", result);
+
+//     return 0;
+// }
 
 // void test_strcmp(const char *str1, const char *str2) {
 //     int result = strcmp(str1, str2);
