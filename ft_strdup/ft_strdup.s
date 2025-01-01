@@ -15,6 +15,7 @@ ft_strdup:
     test rdi, rdi
     jz _error_null
 
+    push rbx
     mov rbx, rdi
 
     call ft_strlen
@@ -30,6 +31,7 @@ ft_strdup:
     mov rsi, rbx
     call ft_strcpy
 
+    pop rbx
     ret
 
 _error_null:

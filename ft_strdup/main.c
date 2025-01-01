@@ -12,12 +12,12 @@ extern ssize_t ft_read(int fd, char *buf, size_t count);
 
 
 int main (){    
-    int     length_msg;
+    char    *text;
 
-    assert(ft_write(50, msg, len) == -1);
-    perror("write");
-    char *sub = ft_strdup("a\n");
-    printf("STR: %s", sub);
+    text = ft_strdup("Goodbye, my friend!\n");
+    printf("string: %s", text);
+
 
     return 0;
 }
+
