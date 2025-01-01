@@ -2,11 +2,11 @@ SRC_C = main.c
 SRC_ASM = ft_strcpy.s
 OBJ_C = main.o
 OBJ_ASM = ft_strcpy.o
-LIBRARY = soma.a
+LIBRARY = ft_strcpy.a
 EXEC = programa
 
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -fPIC
 AS = nasm
 ASFLAGS = -f elf64
 

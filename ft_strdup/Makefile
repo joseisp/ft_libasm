@@ -1,12 +1,12 @@
 SRC_C = main.c
-SRC_ASM = ft_strlen.s
+SRC_ASM = ft_strlen.s ft_strcpy.s ft_strdup.s ft_write.s
 OBJ_C = main.o
-OBJ_ASM = ft_strlen.o
-LIBRARY = ft_strlen.a
+OBJ_ASM = $(SRC_ASM:.s=.o)
+LIBRARY = ft_strdup.a 
 EXEC = programa
 
 CC = gcc
-CFLAGS = -Wall -Wextra -fPIC
+CFLAGS = -Wall -Wextra
 AS = nasm
 ASFLAGS = -f elf64
 
@@ -21,7 +21,7 @@ $(OBJ_C): $(SRC_C)
 $(LIBRARY): $(OBJ_ASM)
 	ar rcs $@ $^
 
-$(OBJ_ASM): $(SRC_ASM)
+$(OBJ_ASM): %.o : %.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 clean:

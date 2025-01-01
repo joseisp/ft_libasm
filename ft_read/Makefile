@@ -1,12 +1,12 @@
 SRC_C = main.c
-SRC_ASM = ft_strlen.s
+SRC_ASM = ft_read.s
 OBJ_C = main.o
-OBJ_ASM = ft_strlen.o
-LIBRARY = ft_strlen.a
+OBJ_ASM = ft_read.o
+LIBRARY = ft_read.a
 EXEC = programa
 
 CC = gcc
-CFLAGS = -Wall -Wextra -fPIC
+CFLAGS = -Wall -Wextra
 AS = nasm
 ASFLAGS = -f elf64
 

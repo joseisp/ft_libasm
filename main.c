@@ -5,10 +5,19 @@
 
 
 int main() {
-    const char *message = "aaaa\n";
-    int i = write(-1, message, 5); // 1 é o descritor de arquivo para stdout
+    char original[] = "maça amassada";
+    char *duplicate = strdup(original);
 
-    printf("o retorno de i: %d \n", i);
+    if (duplicate != NULL) {
+        printf("Original: %s\n", original);
+        printf("Duplicate: %s\n", duplicate);
+
+        // Lembre-se de liberar a memória alocada para a duplicata
+        free(duplicate);
+    } else {
+        printf("Falha ao duplicar a string.\n");
+    }
+
     return 0;
 }
 
