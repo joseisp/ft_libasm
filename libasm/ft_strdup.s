@@ -6,8 +6,6 @@ section .data
     erro_msg     db "Error! Check the arguments", 0xA
     new_line     db 0xa
 
-section .bss
-
 section .text
     global ft_strdup
 
@@ -37,13 +35,13 @@ ft_strdup:
 _error_null:
     mov rax, 1
     mov rdi, 1
-    mov rsi, erro_msg
+    lea rsi, [rel erro_msg]
     mov rdx, 26
     syscall
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, new_line
+    lea rsi, [rel new_line]
     mov rdx, 1
     syscall
 

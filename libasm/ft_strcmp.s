@@ -27,23 +27,29 @@ _loop:
 
 _not_equal:
     sub     bl, al
-    movsx   rax, bl
+    test    bl, bl
+    js      negative
+    mov     rax, 1
+    ret
+
+negative:
+    mov   rax, -1
     ret
 
 _equal:
-    mov     rax, rax
+    xor     rax, rax
     ret
 
 _error_null:
     mov rax, 1
     mov rdi, 1
-    mov rsi, erro_msg
+    lea rsi, [rel erro_msg]
     mov rdx, 26
     syscall
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, new_line
+    lea rsi, [rel new_line]
     mov rdx, 1
     syscall
 

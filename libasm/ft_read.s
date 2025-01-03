@@ -6,9 +6,9 @@ section .bss
     errno resq 1
 
 section .text
-   global ft_write
+   global ft_read
 
-ft_write:
+ft_read:
     test rsi, rsi
     jz _error_null
 
@@ -16,8 +16,8 @@ ft_write:
     jz _error_null
 
 
-ft_write_main:
-    mov rax, 1
+ft_read_main:
+    mov rax, 0
     syscall
     test rax, rax
     js _error
@@ -33,13 +33,13 @@ _error:
 _error_null:
     mov rax, 1
     mov rdi, 1
-    mov rsi, erro_msg
+    lea rsi, [rel erro_msg]
     mov rdx, 26
     syscall
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, new_line
+    lea rsi, [rel new_line]
     mov rdx, 1
     syscall
 

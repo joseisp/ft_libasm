@@ -29,13 +29,13 @@ return:
 _error_null:
     mov rax, 1
     mov rdi, 1
-    mov rsi, erro_msg
+    lea rsi, [rel erro_msg]
     mov rdx, 26
     syscall
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, new_line
+    lea rsi, [rel new_line]
     mov rdx, 1
     syscall
 
