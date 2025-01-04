@@ -1,48 +1,39 @@
+extern __errno_location
+
 section .data
     erro_msg     db "Error! Check the arguments", 0xA
     new_line     db 0xa
 
-section .bss
-    errno resq 1
-
 section .text
-   global ft_read
+    global ft_read
 
 ft_read:
     test rsi, rsi
-    jz _error_null
+    jz set_errno_null
 
     test rdx, rdx
-    jz _error_null
-
+    jz set_errno_null
 
 ft_read_main:
+    call __errno_location wrt ..plt ; reset error_location
+    mov r12, rax
+    mov dword [r12], 0
+
     mov rax, 0
     syscall
     test rax, rax
-    js _error
+    js set_errno_syscall
     ret
 
-_error:
-    mov r8, rax
-    lea rax, [rel errno]
-    mov [rax], r8
+set_errno_syscall:
+    mov dword [r12], eax
+    neg dword [r12]
     mov rax, -1
     ret
 
-_error_null:
-    mov rax, 1
-    mov rdi, 1
-    lea rsi, [rel erro_msg]
-    mov rdx, 26
-    syscall
-
-    mov rax, 1
-    mov rdi, 1
-    lea rsi, [rel new_line]
-    mov rdx, 1
-    syscall
-
-    mov rax, 60
-    xor rdi, rdi
-    syscall
+set_errno_null:
+    call __errno_location wrt ..plt
+    mov r12, rax
+    mov dword [r12], -22 
+    mov rax, -1         
+    ret

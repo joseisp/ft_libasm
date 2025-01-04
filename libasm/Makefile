@@ -6,7 +6,7 @@ LIBRARY = libasm.a
 EXEC = libasmExec
 
 CC = gcc
-CFLAGS = -static -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 AS = nasm
 ASFLAGS = -f elf64
 EXEMPLETXT = exemple_false.txt exemple_true.txt
@@ -15,7 +15,7 @@ EXEMPLETXT = exemple_false.txt exemple_true.txt
 all: $(EXEC)
 
 $(EXEC): $(OBJ_C) $(LIBRARY)
-	$(CC) -o $@ $^ 
+	$(CC) -o $@ $^ -L. -lasm
 
 $(OBJ_C): $(SRC_C)
 	$(CC) -c $(CFLAGS) -o $@ $<
