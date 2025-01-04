@@ -103,6 +103,9 @@ void testWrite()
 
     write(1, &true_test, ft_strlen(true_test));
     write(1, &false_test, ft_strlen(false_test));
+    close(file_descriptor_true);
+    close(file_descriptor_false);
+
 
     return ;
 }
@@ -134,14 +137,14 @@ void testStrdup()
 {
     printf("\nft_strdup: \n");
 
-    const char    *text_false;
+    char    *text_false;
     const char     text_to_test_false[] = "I'm so tired";
-    const char    *text_false_empty;
+    char    *text_false_empty;
     const char     text_to_test_false_empty[] = "";
 
-    const char    *text_true;
+    char    *text_true;
     const char     text_to_test_true[] = "My goodness!!!!!!!!!!!!";
-    const char    *text_true_empty;
+    char    *text_true_empty;
     const char     text_to_test_true_empty[] = "";
 
     
@@ -158,6 +161,12 @@ void testStrdup()
 
 
     printf("Errno output: %d - %s\n", errno, strerror(errno));
+
+    free(text_false);
+    free(text_false_empty);
+    free(text_true);
+    free(text_true_empty);
+
 
 
 }
